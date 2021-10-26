@@ -9,28 +9,41 @@
         div {
             user-select: none;
         }
+        #board {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
         body {
-            background-color: rgb(35, 0, 68);
+            background-image: url("background.jpg");
         }
         div.cell {
-            background-color: rgb(80, 0, 155);
-            border: solid rgb(0, 0, 0);
+            background-color: rgba(43, 117, 0, 0.87);
+            border: solid rgba(255, 99, 71, 0.534);
             border-radius: 20%;
             border-width: 5px;
-            box-shadow: 3px 3px 3px rgb(167, 73, 255);
-            width: 100px;
-            height: 100px;
+            box-shadow: 3px 3px 3px rgb(253, 255, 162);
+            width: 70px;
+            height: 70px;
             float: left;
             margin: 4px;
-            font-size: 500%;
+            font-size: 400%;
             font-family: helvetica;
             text-align: center;
-            vertical-align: middle;
+            line-height: 65px;   
         }
-            h1 {
-                color: rgb(0, 0, 0);
-                text-shadow: 2px 2px 2px rgb(188, 106, 255);
-            }
+        div.cell:hover {
+            background: greenyellow;
+        }
+
+        h1 {
+            color: green;
+            text-shadow: 1px 1px 2px tomato;
+            font-family: cursive;
+            text-align: center;
+        }
+
         div.first {
             clear: left;
         }
@@ -47,9 +60,14 @@
             text-shadow: 3px 3px 3px rgb(0, 0, 0);
         }
         #reset {
-            background-color: rgb(0, 0, 0);
-            box-shadow: 2px 2px 2px rgb(167, 73, 255);
-            color: rgb(167, 73, 255);
+            background: tomato;
+            height: 40px;
+            width: 120px;
+            color: whitesmoke;
+            font-size: large;
+            border-radius: 10%;
+            font-family: cursive;
+            box-shadow: 1px 1px 1px 1px black;
         }
     </style>
 </head>
@@ -83,7 +101,7 @@
         // view
         show();
         function show() {
-            let html = '';
+            let html = '<h1>Tre På Rad</h1>';
             if (playerWon) {
                 boardDiv.innerHTML = `<h1>${who}</h1>`;
             } else {
@@ -96,6 +114,7 @@
                 boardDiv.innerHTML = html;
             }
         }
+
   
 
 
@@ -165,7 +184,7 @@
                 ((board[2] == 'o') && (board[4] == 'o') && (board[6] == 'o'))) {
                 winnerSum.push('o');
                 counterO += 1;
-                who = "O HAR VUNNET";
+                who = "DU TAPTE";
                 playerWon = true;
             }
 
@@ -174,7 +193,7 @@
                 ((board[6] != '') && (board[7] != '') && (board[8] != ''))) {
                 winnerSum.push('0');
                 counter0 += 1;
-                who = "INGEN HAR VUNNET";
+                who = "UAVGJORT";
                 playerWon = true;
             }
 
